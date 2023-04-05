@@ -6,7 +6,7 @@ class UserOutput extends React.Component {
         return (
             <div>
                 <p>{this.props.username}</p>
-                <p>{this.props.p2}</p>
+                <p>{this.props.username}</p>
             </div>
         );
     }
@@ -14,7 +14,8 @@ class UserOutput extends React.Component {
 
 UserOutput.propTypes = {
     username: PropTypes.string.isRequired,
-    p2: PropTypes.string.isRequired
 };
 
 export default UserOutput;
+
+

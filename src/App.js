@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import UserInput from './/components/UserInput';
 import MovieInfo from './/components/MovieInfo';
+import MovieList from './components/MovieList';
 import UserOutput from './/components/UserOutput';
 function App() {
+  const [username, setUsername] = useState("John");
+  const usernameChangedHandler = (event) => {
+    setUsername(event.target.value);
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -12,19 +17,24 @@ function App() {
         <p>
           <code>Hello World!!!</code>
         </p>
-        <div>
-          <UserInput />
-          <MovieInfo poster="images.jpg" title="Avatar" cast='["Liam", "Nial", "Harry"]' genre="Genre: " plot="Plot: " />
-          <MovieInfo poster="images.jpg" title="Avatar" cast='["Liam", "Nial", "Harry"]' genre="Genre: " plot="Plot: " />
-          <MovieInfo poster="images.jpg" title="Avatar" cast='["Liam", "Nial", "Harry"]' genre="Genre: " plot="Plot: " />
-          <MovieInfo poster="images.jpg" title="Avatar" cast='["Liam", "Nial", "Harry"]' genre="Genre: " plot="Plot: " />
-          <MovieInfo poster="images.jpg" title="Avatar" cast='["Liam", "Nial", "Harry"]' genre="Genre: " plot="Plot: " />
 
-          <UserOutput p1="Hello" p2="This is my component." />
-          <UserOutput username="Username: " p2="zanwaar.bese20seecs" />
-        </div>
-      </header>
-    </div>
+        <UserInput
+          changed={usernameChangedHandler}
+          currentName={username}
+        ></UserInput>
+        <UserOutput userName={username}></UserOutput>
+        <UserOutput userName={username}></UserOutput>
+        <UserOutput userName={username}></UserOutput>
+        <MovieInfo poster="images.jpg" title="Avatar" cast='["Liam", "Nial", "Harry"]' genre="Genre: " plot="Plot: " />
+        <MovieList poster="images.jpg" title="Avatar" />
+        <MovieList poster="images.jpg" title="Avatar" />
+        <MovieList poster="images.jpg" title="Avatar" />
+        <MovieList poster="images.jpg" title="Avatar" />
+        <MovieList poster="images.jpg" title="Avatar" />
+
+
+      </header >
+    </div >
   );
 }
 

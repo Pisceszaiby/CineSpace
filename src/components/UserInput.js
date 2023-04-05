@@ -17,12 +17,21 @@ class UserInput extends React.Component {
         return (
             <div>
 
-                <input type="text" />
+                <input
+                    type="text"
+                    onChange={props.changed}
+                    value={props.currentName}
+                ></input>
+                <button style={style}>Change Name</button>
 
             </div>
         );
     }
 }
+
+
+
+
 
 // UserInput.propTypes = {
 //     title: PropTypes.string.isRequired,
