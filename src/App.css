@@ -20,6 +20,31 @@
 
 }
 
+.UserInput {
+
+  background-color: lightblue;
+
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+
+}
+
+
+input {
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
 .UserOutput {
   width: 60%;
   margin: 16px auto;

@@ -1,21 +1,13 @@
-
 import React from 'react';
-import PropTypes from 'prop-types';
-class UserOutput extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>{this.props.username}</p>
-                <p>{this.props.username}</p>
-            </div>
-        );
-    }
+
+const UserOutput = (props) => {
+    return (
+        <div>
+            <p>Username: {props.username}</p>
+            <p>This is the first paragraph of UserOutput.</p>
+
+        </div>
+    );
 }
 
-UserOutput.propTypes = {
-    username: PropTypes.string.isRequired,
-};
-
 export default UserOutput;
-
-
