@@ -1,11 +1,10 @@
 import React from 'react';
 
-const UserOutput = (props) => {
+function UserOutput(props) {
     return (
         <div>
-            <p>Username: {props.username}</p>
-            <p>This is the first paragraph of UserOutput.</p>
-
+            <p>Welcome {props.username}!!</p>
+            <p>Here is a curated Movie Database for you!</p>
         </div>
     );
 }

@@ -20,25 +20,20 @@
 
 }
 
-.UserInput {
-
-  background-color: lightblue;
-
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
-
-
-}
-
-
 input {
   padding: 10px;
   font-size: 20px;
-  border: 2px solid gray;
+  color: white;
+  border-bottom: 5px solid gray;
+  background-color: transparent;
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+input::backdrop {
+  background-color: transparent;
+}
+
 
 p {
   font-size: 18px;
@@ -53,19 +48,28 @@ p {
   text-align: center;
 }
 
+h5 {
+  display: block;
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+  text-align: left;
+
+
+}
+
 .movie_list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  width: 15%;
   padding: 20px;
   margin: 10px;
   color: white;
 }
 
 .movie_list img {
-  width: 20%;
-  height: 100%;
+  width: 100%;
+  height: 200px;
+
 
   border-radius: 10px;
 }
@@ -76,8 +80,15 @@ p {
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
+}
+
+.movie_ref {
+  display: inline;
+  text-decoration: none;
+  color: white;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
