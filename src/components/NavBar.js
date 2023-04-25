@@ -13,10 +13,10 @@ function NavBar() {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">Watch List</a>
+                            <a class="nav-link" href="/watchlist">Watch List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">Popular</a>
+                            <a class="nav-link" href="/movies">Popular</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

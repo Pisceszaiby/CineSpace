@@ -8,7 +8,7 @@ function Home() {
             <PopularMovieList />
             <a href="/"><h3>View Most Popular Movies</h3></a>
             <PopularMovieList />
-            <a href="/about"><h3>Genre: Horror</h3></a>
+            <a href="/movieinfo"><h3>Genre: Horror</h3></a>
             <PopularMovieList />
             <a href="/about"><h3>Genre: Drama</h3></a>
             <PopularMovieList />
