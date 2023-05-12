@@ -18,7 +18,7 @@ const MovieList = (props) => {
                 <div class="card-group ">
                     {firstSixMovies.map((movie, index) => (
                         <div class="card">
-                            <a href={movie.image_url}>
+                            <a href={`/movies/${movie._id}`}>
                                 <img src={movie.image_url} class="card-img-top" alt="mo"></img>
                             </a>
                             <div class="card-body">
@@ -36,7 +36,7 @@ const MovieList = (props) => {
                         firstThreeMovies.map(movie => (
 
                             <div class="card">
-                                <a href={movie.image_url}>
+                                <a href={`/movies/${movie._id}`}>
                                     <img src={movie.image_url} class="card-img-top" alt="mo"></img>
                                 </a><div class="card-body">
                                     <h5 class="card-title">{movie.name}</h5>

@@ -10,6 +10,7 @@ function Router() {
             <Route path="/" element={<Home />} />
             <Route path="/watchlist" element={<WatchList />} />
             <Route path="/movies" element={<Movies category="Popular" />} />
+            <Route path="/movies/:id" element={<MovieInfo />} />
             <Route path="/movieinfo" element={<MovieInfo />} />
             <Route path="/genre/action" element={<Movies category="Action" />} />
             <Route path="/genre/adventure" element={<Movies category="Adventure" />} />

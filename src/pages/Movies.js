@@ -25,7 +25,7 @@ function Movies(props) {
                     allMovies.map(movie => (
                         <div class="col">
                             <div class="card h-100">
-                                <a href={movie.image_url}>
+                                <a href={`/movies/${movie._id}`}>
                                     <img src={movie.image_url} class="card-img-top" alt="mo"></img>
                                 </a>
                                 <div class="card-body">
