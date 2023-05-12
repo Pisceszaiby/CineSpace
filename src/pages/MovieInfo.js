@@ -7,7 +7,7 @@ function MovieInfo(props) {
     return (
         <div class="container">
 
-            <h5 class="title">Movie Title: {props.title}</h5>
+            <h5 class="title">Movie Title: {props.name}</h5>
             <a href=""><img class="add" src="add.png"></img></a>
             <a href=""><img class="add" src="remove.png"></img></a>
             <div class="row">
