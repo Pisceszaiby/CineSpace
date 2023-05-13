@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MovieMap from '../components/MovieMap';
 function WatchList() {
     var topGenres = [];
     var topActors = [];
@@ -70,26 +71,11 @@ function WatchList() {
     topGenres = genreCountArray.slice(0, 3).map(genre => genre[0]);
     topActors = actorCountArray.slice(0, 3).map(actor => actor[0]);
     topDirectors = directorCountArray.slice(0, 3).map(director => director[0]);
-    console.log(topGenres);
+
     return (
         <div>
             <h3>Your WatchList</h3>
-            <div class="row row-cols-3 row-cols-md-5 row-cols-lg-6  g-3">
-                {
-                    watchlistMovies.map(movie => (
-                        <div class="col">
-                            <div class="card h-100">
-                                <a href={`/movies/${movie._id}`}>
-                                    <img src={movie.image_url} class="card-img-top" alt="mo"></img>
-                                </a>
-                                <div class="card-body">
-                                    <h6 class="card-title">{movie.name}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
+            <MovieMap movieList={watchlistMovies} />
             <h5>Your Top Genres: {topGenres.join(', ')}</h5>
             <h5>Your Top Actors: {topActors.join(', ')}</h5>
             <h5>Your Favourite Director: {topDirectors.join(', ')}</h5>

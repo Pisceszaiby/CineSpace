@@ -1,11 +1,36 @@
 import React from 'react';
-
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function NavBar() {
+
+    const [query, setQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = async (event) => {
+        if (window.location.pathname !== "/search-results")
+            event.preventDefault();
+
+
+        // prevent default behavior
+        try {
+            const response = await axios.get('http://localhost:4000/movies/search', { params: { q: query } });
+            if (response.status === 200) {
+
+
+                navigate("/search-results");
+            } else {
+                // handle unsuccessful response here
+            }
+        } catch (error) {
+            // handle error here
+        }
+    }
 
     return (
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">MovieDB</a>
+                <a class="navbar-brand" href="/">MovieDB</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -19,7 +44,7 @@ function NavBar() {
                             <a class="nav-link" href="/movies">Popular</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Genre
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -27,7 +52,7 @@ function NavBar() {
                                 <li><a class="dropdown-item" href="/genre/drama">Drama</a></li>
                                 <li><a class="dropdown-item" href="/genre/thriller">Thriller</a></li>
                                 <li><a class="dropdown-item" href="/genre/mystery">Mystery</a></li>
-                                <li><a class="dropdown-item" href="/genre/sci-fi">Sci-fi</a></li>
+                                <li><a class="dropdown-item" href="/genre/sci-fi">Sci-Fi</a></li>
                                 <li><a class="dropdown-item" href="/genre/horror">Horror</a></li>
                                 <li><a class="dropdown-item" href="/genre/romance">Romance</a></li>
                                 <li><a class="dropdown-item" href="/genre/western">Western</a></li>
@@ -40,9 +65,19 @@ function NavBar() {
                         </li>
 
                     </ul>
-                    <form class="d-flex">
-                        <input id="navbarmovie" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    <form className="d-flex" onSubmit={handleSearch}>
+                        <input
+                            id="navbarmovie"
+                            className="form-control me-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                        <button className="btn btn-outline-success" type="submit">
+                            Search
+                        </button>
                     </form>
                 </div>
             </div>
@@ -50,4 +85,17 @@ function NavBar() {
     );
 }
 
+
+
 export default NavBar;
+
+
+        // axios.post('http://localhost:4000/search-results', response.data)
+            //     .then(response => {
+            //         console.log(response.data);
+            //         // handle the response from the backend
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //         // handle the error
+            //     });

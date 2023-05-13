@@ -24,35 +24,35 @@ function Home() {
     return (
         <div>
             <h1>Your Personalized MovieDB</h1>
-            <h3>View Watch List</h3>
+            <a href="/watchlist"><h3>Movies from your watchlist</h3></a>
             <MovieList movies={moviesList} category="Popular" watchlist={true} />
-            <a href="/"><h3>View Most Popular Movies</h3></a>
+            <a href="/movies"><h3>View Most Popular Movies</h3></a>
             <MovieList movies={moviesList} category="Popular" watchlist={false} />
-            <a href="/movieinfo"><h3>Genre: Drama</h3></a>
+            <a href="/genre/drama"><h3>Drama</h3></a>
             <MovieList movies={moviesList} category="Drama" watchlist={false} />
-            <a href="/about"><h3>Genre: Action</h3></a>
+            <a href="/genre/action"><h3>Action</h3></a>
             <MovieList movies={moviesList} category="Action" watchlist={false} />
-            <a href="/movieinfo"><h3>Genre: Animation</h3></a>
+            <a href="/genre/animation"><h3>Animation</h3></a>
             <MovieList movies={moviesList} category="Animation" watchlist={false} />
-            <a href="/about"><h3>Genre: Comedy</h3></a>
+            <a href="/genre/comedy"><h3>Comedy</h3></a>
             <MovieList movies={moviesList} category="Comedy" watchlist={false} />
-            <a href="/movieinfo"><h3>Genre: Horror</h3></a>
+            <a href="/genre/horror"><h3>Horror</h3></a>
             <MovieList movies={moviesList} category="Western" watchlist={false} />
-            <a href="/movieinfo"><h3>Genre: Western</h3></a>
+            <a href="/genre/western"><h3>Western</h3></a>
             <MovieList movies={moviesList} category="Horror" watchlist={false} />
-            <a href="/movieinfo"><h3>Genre: Romance</h3></a>
+            <a href="/genre/romance"><h3>Romance</h3></a>
             <MovieList movies={moviesList} category="Romance" watchlist={false} />
-            <a href="/movieinfo"><h3>Genre: Thriller</h3></a>
+            <a href="/genre/thriller"><h3>Thriller</h3></a>
             <MovieList movies={moviesList} category="Thriller" watchlist={false} />
-            <a href="/about"><h3>Genre: Crime</h3></a>
+            <a href="/genre/crime"><h3>Crime</h3></a>
             <MovieList movies={moviesList} category="Crime" watchlist={false} />
-            <a href="/movieinfo"><h3>Genre: Mystery</h3></a>
+            <a href="/genre/mystery"><h3>Mystery</h3></a>
             <MovieList movies={moviesList} category="Mystery" watchlist={false} />
-            <a href="/about"><h3>Genre: Adventure</h3></a>
+            <a href="/genre/adventure"><h3>Adventure</h3></a>
             <MovieList movies={moviesList} category="Adventure" watchlist={false} />
-            <a href="/about"><h3>Genre: War</h3></a>
+            <a href="/genre/war"><h3>War</h3></a>
             <MovieList movies={moviesList} category="War" watchlist={false} />
-            <a href="/about"><h3>Genre: Sci-Fi</h3></a>
+            <a href="/genre/sci-fi"><h3>Sci-Fi</h3></a>
             <MovieList movies={moviesList} category="Sci-Fi" watchlist={false} />
 
         </div>

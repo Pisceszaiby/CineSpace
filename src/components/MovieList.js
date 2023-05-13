@@ -16,7 +16,7 @@ const MovieList = (props) => {
         <div class="row">
             <section class="d-none d-md-block d-lg-block">
                 <div class="card-group ">
-                    {firstSixMovies.map((movie, index) => (
+                    {firstSixMovies.map((movie) => (
                         <div class="card">
                             <a href={`/movies/${movie._id}`}>
                                 <img src={movie.image_url} class="card-img-top" alt="mo"></img>

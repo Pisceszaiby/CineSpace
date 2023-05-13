@@ -5,9 +5,10 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const cors = require("cors")
 const mongoose = require('mongoose');
+const { redirect } = require("react-router-dom");
 
 const app = express();
-
+var search_results;
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(bodyParser.urlencoded({
@@ -67,8 +68,41 @@ app.put('/movies/:name', async (req, res, next) => {
 });
 
 
+app.get('/movies/search', async (req, res, next) => {
+    try {
+        const query = req.query.q; // get the query from the URL parameter
+        const regex = new RegExp(query, 'i'); // create a regular expression to perform case-insensitive search
+
+        // find the movies that match the search query
+        const movies = await Movie.find({
+            $or: [
+                { name: regex },
+                { desc: { $regex: regex } },
+                { actors: { $elemMatch: { name: { $regex: `/${query}/i` } } } }
 
 
+            ]
+        });
+
+        console.log("IN GET /MOV/SEARCH INIT", movies)
+        search_results = movies;
+        res.redirect('/search-results');
+
+
+
+
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+});
+
+app.get('/search-results', (req, res) => {
+    console.log("In get search results")
+    console.log(search_results);
+    res.json(search_results);
+
+});
 // app.get("/movies/allWatch", async function (req, res, next) {
 //     try {
 //         const updatedMovie = await Movie.updateMany({}, { $set: { watch: true } }, { new: true });
