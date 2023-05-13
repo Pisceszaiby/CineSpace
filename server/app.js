@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 app.set('view engine', 'ejs');
-
+app.use(express.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -30,6 +30,7 @@ const movieSchema = {
     rating: Number,
     thumb_url: String,
     year: Number,
+    watchlist: Boolean
 };
 
 const Movie = mongoose.model("movies", movieSchema);
@@ -47,91 +48,36 @@ app.route("/movies")
     })
 
 
-//   .post(function (req, res) {
+app.put('/movies/:name', async (req, res, next) => {
+    try {
+        const updatedMovie = await Movie.findOneAndUpdate({ name: req.params.name }, { watchlist: req.body.watchlist }, { new: true });
+        console.log(req.body.watchlist)
 
-//     const newArticle = new Article({
-//       title: req.body.title,
-//       content: req.body.content
-//     });
+        if (!updatedMovie) {
+            return res.status(404).json({ message: 'Movie not found' });
 
-//     newArticle.save(function (err) {
-//       if (!err) {
-//         res.send("Successfully added a new article.");
-//       } else {
-//         res.send(err);
-//       }
-//     });
-//   })
+        }
 
-//   .delete(function (req, res) {
+        console.log(updatedMovie);
+        res.json(updatedMovie);
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+});
 
-//     Article.deleteMany(function (err) {
-//       if (!err) {
-//         res.send("Successfully deleted all articles.");
-//       } else {
-//         res.send(err);
-//       }
-//     });
-//   });
 
-// ////////////////////////////////Requests Targetting A Specific Article////////////////////////
 
-// app.route("/articles/:articleTitle")
 
-//   .get(function (req, res) {
+// app.get("/movies/allWatch", async function (req, res, next) {
+//     try {
+//         const updatedMovie = await Movie.updateMany({}, { $set: { watch: true } }, { new: true });
 
-//     Article.findOne({ title: req.params.articleTitle }, function (err, foundArticle) {
-//       if (foundArticle) {
-//         res.send(foundArticle);
-//       } else {
-//         res.send("No articles matching that title was found.");
-//       }
-//     });
-//   })
-
-//   .put(function (req, res) {
-
-//     Article.update(
-//       { title: req.params.articleTitle },
-//       { title: req.body.title, content: req.body.content },
-//       { overwrite: true },
-//       function (err) {
-//         if (!err) {
-//           res.send("Successfully updated the selected article.");
-//         }
-//       }
-//     );
-//   })
-
-//   .patch(function (req, res) {
-
-//     Article.update(
-//       { title: req.params.articleTitle },
-//       { $set: req.body },
-//       function (err) {
-//         if (!err) {
-//           res.send("Successfully updated article.");
-//         } else {
-//           res.send(err);
-//         }
-//       }
-//     );
-//   })
-
-//   .delete(function (req, res) {
-
-//     Article.deleteOne(
-//       { title: req.params.articleTitle },
-//       function (err) {
-//         if (!err) {
-//           res.send("Successfully deleted the corresponding article.");
-//         } else {
-//           res.send(err);
-//         }
-//       }
-//     );
-//   });
-
+//     } catch (error) {
+//         console.error(error);
+//         next(error);
+//     }
+// });
 
 
 app.listen(4000, function () {
