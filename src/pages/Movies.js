@@ -7,10 +7,12 @@ function Movies(props) {
         try {
             const response = await fetch(url);
             var result = await response.json();
+
             result.sort((a, b) => (a.year < b.year) ? 1 : -1)
             var moviesList;
             if (props.category !== "Popular") {
                 moviesList = result.filter(movie => movie.genre.includes(props.category))
+
             }
             else {
                 moviesList = result;
@@ -26,10 +28,9 @@ function Movies(props) {
 
     return (
         <div>
-            <h3>Popular Movies</h3>
+            <h3>{props.category.toUpperCase()}</h3>
             <MovieMap movieList={allMovies} />
-
-
+            <br></br>
         </div >
     )
 }

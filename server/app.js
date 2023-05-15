@@ -36,7 +36,7 @@ const movieSchema = {
 
 const Movie = mongoose.model("movies", movieSchema);
 
-///////////////////////////////////Requests Targetting all Articles////////////////////////
+///////////////////////////////////Requests Targetting all Movies////////////////////////
 
 app.route("/movies")
     .get(async function (req, res) {
@@ -48,17 +48,14 @@ app.route("/movies")
         }
     })
 
-
+///////////////////////////////////Requests Targetting Updating a specific Movie////////////////////////
 app.put('/movies/:name', async (req, res, next) => {
     try {
-        const updatedMovie = await Movie.findOneAndUpdate({ name: req.params.name }, { watchlist: req.body.watchlist }, { new: true });
+        const updatedMovie = await Movie.findOneAndUpdate({ name: String(req.params.name) }, { watchlist: req.body.watchlist }, { new: true });
         console.log(req.body.watchlist)
-
         if (!updatedMovie) {
             return res.status(404).json({ message: 'Movie not found' });
-
         }
-
         console.log(updatedMovie);
         res.json(updatedMovie);
     } catch (error) {
@@ -72,47 +69,29 @@ app.get('/movies/search', async (req, res, next) => {
     try {
         const query = req.query.q; // get the query from the URL parameter
         const regex = new RegExp(query, 'i'); // create a regular expression to perform case-insensitive search
-
         // find the movies that match the search query
         const movies = await Movie.find({
             $or: [
                 { name: regex },
                 { desc: { $regex: regex } },
                 { actors: { $elemMatch: { name: { $regex: `/${query}/i` } } } }
-
-
             ]
         });
-
         console.log("IN GET /MOV/SEARCH INIT", movies)
         search_results = movies;
         res.redirect('/search-results');
-
-
-
-
     } catch (error) {
         console.error(error);
         next(error);
     }
 });
-
+//getting search results
 app.get('/search-results', (req, res) => {
     console.log("In get search results")
     console.log(search_results);
     res.json(search_results);
 
 });
-// app.get("/movies/allWatch", async function (req, res, next) {
-//     try {
-//         const updatedMovie = await Movie.updateMany({}, { $set: { watch: true } }, { new: true });
-
-//     } catch (error) {
-//         console.error(error);
-//         next(error);
-//     }
-// });
-
 
 app.listen(4000, function () {
     console.log("Server started on port 4000");

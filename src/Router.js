@@ -27,7 +27,6 @@ function Router() {
             <Route path="/genre/thriller" element={<Movies category="Thriller" />} />
             <Route path="/genre/war" element={<Movies category="War" />} />
             <Route path="/genre/western" element={<Movies category="Western" />} />
-
         </Routes>
     );
 }

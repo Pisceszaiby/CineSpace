@@ -22,7 +22,7 @@ const MovieList = (props) => {
                                 <img src={movie.image_url} class="card-img-top" alt="mo"></img>
                             </a>
                             <div class="card-body">
-                                <h6 class="card-title">{movie.name}</h6>
+                                <h4 class="card-title">{movie.name}</h4>
                             </div>
                         </div>
                     ))}

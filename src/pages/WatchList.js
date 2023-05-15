@@ -74,11 +74,14 @@ function WatchList() {
 
     return (
         <div>
-            <h3>Your WatchList</h3>
+            <h3>WATCHLIST</h3>
             <MovieMap movieList={watchlistMovies} />
-            <h5>Your Top Genres: {topGenres.join(', ')}</h5>
-            <h5>Your Top Actors: {topActors.join(', ')}</h5>
-            <h5>Your Favourite Director: {topDirectors.join(', ')}</h5>
+
+            <br></br>
+
+            <h5 className='title'>Your Top Genres: </h5>{topGenres.join(', ')}
+            <h5 className='title'>Your Top Actors: </h5>{topActors.join(', ')}
+            <h5 className='title'>Your Favourite Director: </h5>{topDirectors.join(', ')}
 
         </div >
     )
