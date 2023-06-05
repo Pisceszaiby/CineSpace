@@ -1,11 +1,13 @@
 # CineSpace
-CineSpace is a Full Stack Movie Database MERN Web Application. It displays the most popular movies of IMDB. The application allows the user to search for movies based on its genre, name and description. A curated list of movies based on genre is shown in different genre pages. You can search for a movie’s plot, release year, IMDB Rating, actors, genre, directors and description. Users can also maintain a watch list. Based on the watch List the application rates the top genre, actor, movie of the user.
+CineSpace is a Full Stack Movie Database MERN Web Application. It displays and recommends the most popular movies of IMDB. The application allows the user to search for movies based on its genre, name and description. A curated list of movies based on genre is shown in different genre pages. You can search for a movie’s plot, release year, IMDB Rating, actors, genre, directors and description. Users can also maintain a watch list. Based on the watch List the application rates the top genre, actor, movie of the user, and maintains a recommendation list of the movie.
 ## Images
 #### Main Page
 ![image](https://github.com/Pisceszaiby/CineSpace/assets/52016745/0a708876-0472-4b47-80ce-5e30daeefd51)
 #### WatchList
-![image](https://github.com/Pisceszaiby/CineSpace/assets/52016745/403757f5-5de4-4034-b5f2-454b91ccafe2)
-![image](https://github.com/Pisceszaiby/CineSpace/assets/52016745/113799a1-b620-41e7-8cb4-5233a7b95c00)
+![localhost_3001_watchlist(Nest Hub Max)](https://github.com/Pisceszaiby/CineSpace/assets/52016745/6768b4d2-1637-4d5f-9a09-44de46f48be8)
+
+#### Recommendations
+![localhost_3001_recommended(Nest Hub Max)](https://github.com/Pisceszaiby/CineSpace/assets/52016745/59762870-41c9-4edb-9c7b-34799ea12ecf)
 #### Search Results Page
 ![image](https://github.com/Pisceszaiby/CineSpace/assets/52016745/4d17d8a7-2580-49ab-a55c-99de25b0e18b)
 #### Movie Info Page
