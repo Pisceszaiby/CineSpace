@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 function NavBar() {
 
     const [query, setQuery] = useState('');
@@ -13,7 +14,7 @@ function NavBar() {
         try {
             const response = await axios.get('http://localhost:4000/movies/search', { params: { q: query } });
             if (response.status === 200) {
-                navigate("/search-results");
+                navigate("search-results");
             } else {
                 console.log("Error");
             }
@@ -23,6 +24,7 @@ function NavBar() {
     }
 
     return (
+
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">CINESPACE</a>
@@ -34,6 +36,9 @@ function NavBar() {
 
                         <li class="nav-item">
                             <a class="nav-link" href="/watchlist">WATCHLIST</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/recommended">RECOMMENDATIONS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/movies">POPULAR</a>
@@ -77,7 +82,9 @@ function NavBar() {
                 </div>
             </div>
         </nav>
+
     );
+
 }
 
 

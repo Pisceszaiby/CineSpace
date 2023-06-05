@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #0d0113;
+  background-color: #040113;
   color: rgb(255, 255, 255);
   font-family: gothic;
 }
@@ -90,6 +90,7 @@ p {
   background-color: #1c1221;
   color: rgb(177, 246, 255);
   border: 0 solid;
+  border-radius: 0;
   border-bottom: 2px solid rgb(177, 246, 255);
 
 }
@@ -140,6 +141,10 @@ p {
 .card:hover {
   background: #4343433d;
   box-shadow: 0 0 10px #ee029f6e;
+}
+
+.card img:hover {
+  transform: scale(1.02)
 }
 
 /* KEY FRAMES */

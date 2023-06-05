@@ -6,6 +6,8 @@ const MovieList = (props) => {
         movieList = props.movies.filter(movie => movie.watchlist === true)
     else if (props.category === "Popular")
         movieList.sort((a, b) => (a.year < b.year) ? 1 : -1)
+    else if (props.category === "recommendations")
+        movieList = movieList;
     else
         movieList = props.movies.filter(movie => movie.genre.includes(props.category))
     const firstSixMovies = movieList.slice(0, 6);

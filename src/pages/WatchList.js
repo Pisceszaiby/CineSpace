@@ -82,7 +82,8 @@ function WatchList() {
             <h5 className='title'>Your Top Genres: </h5>{topGenres.join(', ')}
             <h5 className='title'>Your Top Actors: </h5>{topActors.join(', ')}
             <h5 className='title'>Your Favourite Director: </h5>{topDirectors.join(', ')}
-
+            <br></br>
+            <br></br>
         </div >
     )
 }

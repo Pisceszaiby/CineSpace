@@ -5,12 +5,14 @@ import Movies from './pages/Movies';
 import Search from './pages/Search';
 import { Route, Routes } from 'react-router-dom';
 import WatchList from './pages/WatchList';
+import RecommendList from './pages/RecommendedMovies';
 function Router() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/search-results" element={<Search />} />
             <Route path="/watchlist" element={<WatchList />} />
+            <Route path="/recommended" element={<RecommendList />} />
             <Route path="/movies" element={<Movies category="Popular" />} />
             <Route path="/movies/:id" element={<MovieInfo />} />
             <Route path="/movieinfo" element={<MovieInfo />} />

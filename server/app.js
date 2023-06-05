@@ -93,6 +93,77 @@ app.get('/search-results', (req, res) => {
 
 });
 
+
+
+app.get('/movies/recommendations', async (req, res, next) => {
+    const watch_list_movies = await Movie.find({ watchlist: true });
+    const movies = await Movie.find();
+    try {
+        const recommendations = generateMovieRecommendations(watch_list_movies);
+        res.json(recommendations.filter(movie => movie.watchlist == false));
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+    function generateMovieRecommendations(referenceMovies) {
+
+        const sameActorMovies = [];
+        referenceMovies.forEach(referenceMovie => {
+            movies.forEach(movie => {
+                if (
+                    movie.actors.some(actor => referenceMovie.actors.includes(actor)) &&
+                    !sameActorMovies.some(sameActorMovie => sameActorMovie._id === movie._id) &&
+                    movie._id !== referenceMovie._id
+                ) {
+                    sameActorMovies.push(movie);
+                }
+            });
+        });
+
+
+        const sameDirectorMovies = [];
+        referenceMovies.forEach(referenceMovie => {
+            movies.forEach(movie => {
+                if (
+                    movie.directors.some(director => referenceMovie.directors.includes(director)) &&
+                    !sameActorMovies.some(sameActorMovie => sameActorMovie._id === movie._id) &&
+                    !sameDirectorMovies.some(sameDirectorMovie => sameDirectorMovie._id === movie._id) &&
+                    movie._id !== referenceMovie._id
+                ) {
+                    sameDirectorMovies.push(movie);
+                }
+            });
+        });
+
+
+        const sameGenreMovies = [];
+        referenceMovies.forEach(referenceMovie => {
+            movies.forEach(movie => {
+                if (
+                    movie.genre.some(genre => referenceMovie.genre.includes(genre)) &&
+                    !sameActorMovies.some(sameActorMovie => sameActorMovie._id === movie._id) &&
+                    !sameDirectorMovies.some(sameDirectorMovie => sameDirectorMovie._id === movie._id) &&
+                    !sameGenreMovies.some(sameGenreMovie => sameGenreMovie._id === movie._id) &&
+                    movie._id !== referenceMovie._id
+                ) {
+                    sameGenreMovies.push(movie);
+                }
+            });
+        });
+
+        const recommendations = [...sameActorMovies, ...sameDirectorMovies, ...sameGenreMovies];
+
+        const uniqueRecommendations = Array.from(new Set(recommendations.map(movie => movie._id)))
+            .map(_id => recommendations.find(movie => movie._id === _id))
+            .slice(0, 30);
+        //use fiter to remove watchlist movies
+        return uniqueRecommendations;
+    }
+});
+
+// Step 2: Generate movie recommendations based on genre, directors, and actors
+
+
 app.listen(4000, function () {
     console.log("Server started on port 4000");
 });
